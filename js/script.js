@@ -56,8 +56,8 @@ var intervalId = 0;
 
 //Brick Stuff
 var bricks;
-var NROWS = 1;
-var NCOLS = 3;
+var NROWS = 5;
+var NCOLS = 5;
 var BRICKWIDTH;
 var BRICKHEIGHT = 15;
 var PADDING = 8;
