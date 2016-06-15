@@ -1,35 +1,14 @@
 //get a reference to the canvas
 var ctx = $('#canvas')[0].getContext("2d");
 
-//Circles
-// ctx.fillStyle = "#00A308";
-// ctx.beginPath();
-// ctx.arc(220, 220, 50, 0, Math.PI*2, true);
-// ctx.closePath();
-// ctx.fill();
-
-// ctx.fillStyle = "#FF1C0A";
-// ctx.beginPath();
-// ctx.arc(100, 100, 100, 0, Math.PI*2, true);
-// ctx.closePath();
-// ctx.fill();
-//
-// //ghost rectangle
-// ctx.fillStyle = "rgba(255, 255, 0, .5)"
-// ctx.beginPath();
-// ctx.rect(15, 150, 120, 120);
-// ctx.closePath();
-// ctx.fill();
-
-
 //BEGIN LIBRARY CODE
 //Defines the Starting point of the ball
 var x = 600;
 var y = 500;
 
 //Defines the balls movement in relation to x, y coordinates per 10 milliseconds
-var dx = 2;
-var dy = -4;
+var dx = 6;
+var dy = -8;
 
 //$('#canvas')[0].getContext("2d");
 var ctx;
@@ -40,8 +19,8 @@ var HEIGHT;
 
 // Paddle
 var paddlex;
-var paddleh = 35;
-var paddlew = 125;
+var paddleh = 15;
+var paddlew = 55;
 
 // Paddle movements
 var rightDown = false;
@@ -56,24 +35,12 @@ var intervalId = 0;
 
 //Brick Stuff
 var bricks;
-var NROWS = 1;
-var NCOLS = 3;
+var NROWS = 7;
+var NCOLS = 13;
 var BRICKWIDTH;
 var BRICKHEIGHT = 15;
 var PADDING = 8;
 
-// // lives
-// var lives = 3;
-// // draws the lives onto the screen
-// drawLives();
-//
-// function drawLives() {
-//    ctx.font = "16px Arial";
-//    ctx.fillStyle = "black";
-//    ctx.fillText("Lives: "+lives, canvas.width-150, 150);
-// }
-
-// D
 function init() {
   ctx = $('#canvas')[0].getContext("2d");
   WIDTH = $("#canvas").width();
@@ -92,16 +59,6 @@ function circle(x,y,r) {
   ctx.closePath();
   ctx.fill();
 }
-
-
-// // Trying to make a second ball
-// function circle2(x,y,r) {
-//   ctx.beginPath();
-//   ctx.arc(x, y, r, 0, Math.PI*2, true);
-//   ctx.closePath();
-//   ctx.fill();
-// }
-
 
 // rectangle
 function rect(x,y,w,h) {
@@ -210,27 +167,6 @@ function draw() {
     else if (y + dy + ballr > HEIGHT)
       clearInterval(intervalId);
   }
-
-  var score = 0;
-   //Draws score on screen
-   drawScore();
-
-   // Draw teh score on canvas
-   function drawScore() {
-      ctx.font = "16px Arial";
-      ctx.fillStyle = "black";
-      ctx.fillText("Score: "+score, 8, 20);
-   }
-
-   // if score = 0 then alert and load lvl 2
-   if(score == NROWS*NCOLS) {
-      win.play();
-      alert("lvl 2");
-      document.location="lvl2.html";
-   }
-
-// How do I write a loop with the break break to up the score by 1 per brick break
-   for (i = 0; i < NROWS + NCOLS.length; i ++);
 
   x += dx;
   y += dy;
